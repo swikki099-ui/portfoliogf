@@ -64,7 +64,7 @@ export default function Hero() {
             className="max-w-xl"
           >
             <p className="text-xl md:text-2xl text-slate-500 font-medium mb-10 leading-relaxed">
-              A <span className="text-slate-900 font-bold">Frontend Developer</span> dedicated to building fast, reliable, and exceptionally clean digital products.
+              A <span className="text-slate-900 font-bold">Frontend Developer & AI Enthusiast</span> dedicated to building intelligent, fast, and reliable digital products, staying ahead with the latest <span className="text-indigo-600 font-bold">AI innovations</span>.
             </p>
           </motion.div>
 

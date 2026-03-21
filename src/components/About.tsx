@@ -42,12 +42,11 @@ export default function About() {
             {/* Context Text */}
             <div className="text-sm prose prose-sm dark:prose-invert">
               <p className="text-slate-600 leading-relaxed mb-4">
-                I'm a web developer focused on building fast, reliable, and clean digital products. I care about execution
-                more than ideas, and I approach every project with a clear goal: ship something that actually works.
+                I'm a web developer and AI enthusiast focused on building intelligent, fast, and reliable digital products. I care about execution
+                more than ideas, and I approach every project with a clear goal: ship something that stays ahead of the curve.
               </p>
               <p className="text-slate-600 leading-relaxed mb-4">
-                I work across Frontend design, UI/UX decisions, and backend logic where necessary, and I constantly strive to
-                improve my skills and stay up-to-date with the latest trends in the industry.
+                With a deep interest in <span className="text-indigo-600 font-bold">Artificial Intelligence</span>, I constantly integrate the latest AI advancements into my frontend architecture and UI/UX decisions. I stay updated with the rapidly evolving AI landscape to build modern, future-proof applications.
               </p>
               
               <div className="flex gap-4 mt-8">

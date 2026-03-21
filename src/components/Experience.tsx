@@ -3,14 +3,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { 
-  Code2, 
-  Terminal, 
-  Database, 
-  GitBranch, 
-  Layout, 
-  Settings2, 
-  Layers, 
+import {
+  Code2,
+  Terminal,
+  Database,
+  GitBranch,
+  Layout,
+  Settings2,
+  Layers,
   Cpu,
   Briefcase
 } from "lucide-react";
@@ -27,7 +27,7 @@ const frontendSkills = [
 
 const backendSkills = [
   { name: "PostgreSQL", icon: Database, color: "text-indigo-500", bg: "bg-indigo-50" },
-  { name: "Node JS", icon: Settings2, color: "text-green-600", bg: "bg-green-50" },
+  { name: "Next JS", icon: Settings2, color: "text-green-600", bg: "bg-green-50" },
   { name: "MongoDB", icon: Database, color: "text-emerald-500", bg: "bg-emerald-50" },
   { name: "Git", icon: GitBranch, color: "text-orange-600", bg: "bg-orange-50" },
 ];
@@ -37,7 +37,7 @@ export default function Experience() {
     <section id="experience" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-5xl md:text-6xl font-black text-slate-900 font-display mb-6 tracking-tight"
@@ -60,7 +60,7 @@ export default function Experience() {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {frontendSkills.map((skill) => (
-                  <div 
+                  <div
                     key={skill.name}
                     className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group/skill"
                   >
@@ -101,7 +101,7 @@ export default function Experience() {
               <span className="text-lg font-bold text-slate-500 uppercase tracking-widest">Years of Experience</span>
             </div>
             <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-slate-900 group-hover:text-white transition-all duration-500">
-               <AnimatedIcon icon={Briefcase} size={28} animate="float" />
+              <AnimatedIcon icon={Briefcase} size={28} animate="float" />
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export default function Experience() {
             <h4 className="text-2xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">Ready to Build?</h4>
             <p className="text-indigo-100 text-sm font-medium">Let's turn your ideas into functional products.</p>
             <div className="mt-6 flex items-center gap-2 px-6 py-3 bg-white rounded-full text-indigo-600 font-bold text-sm">
-               Get in Touch
+              Get in Touch
             </div>
           </div>
         </div>

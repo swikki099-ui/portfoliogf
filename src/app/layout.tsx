@@ -5,6 +5,7 @@ import "./globals.css";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/ui/custom-cursor";
 import Particles from "@/components/ui/particles";
+import FloatingJoinUs from "@/components/FloatingJoinUs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,10 +20,21 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Divyanshu Chaursia | Frontend Developer",
+  title: "Divyanshu Chaursia | Frontend Developer & AI Enthusiast",
   description:
-    "Portfolio of Divyanshu Chaurasia – Professional Frontend Developer specializing in modern, responsive websites and applications.",
-  keywords: ["Divyanshu Chaurasia", "web developer", "frontend developer", "portfolio", "React", "Next.js"],
+    "Divyanshu Chaursia – Frontend Developer with expertise in AI technologies and modern web development. Updated with the latest AI trends to build intelligent, responsive, and high-performance digital experiences.",
+  keywords: [
+    "Divyanshu Chaursia", 
+    "web developer", 
+    "frontend developer", 
+    "portfolio", 
+    "React", 
+    "Next.js", 
+    "AI", 
+    "Artificial Intelligence", 
+    "Machine Learning Enthusiast", 
+    "Intelligent UI"
+  ],
   authors: [{ name: "Divyanshu Chaurasia" }],
   robots: "index, follow",
   manifest: "/assets/site.webmanifest",
@@ -31,15 +43,15 @@ export const metadata: Metadata = {
     apple: "/assets/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Divyanshu Chaursia | Frontend Developer",
-    description: "Professional Frontend Developer specializing in modern, responsive websites.",
+    title: "Divyanshu Chaursia | Frontend Developer & AI Enthusiast",
+    description: "Frontend Developer specializing in AI-enhanced modern web applications.",
     type: "website",
     images: [{ url: "/assets/chaursia-logo.png" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Divyanshu Chaursia | Frontend Developer",
-    description: "Professional Frontend Developer specializing in modern, responsive websites.",
+    title: "Divyanshu Chaursia | Frontend Developer & AI Enthusiast",
+    description: "Frontend Developer specializing in AI-enhanced modern web applications.",
     images: ["/assets/chaursia-logo.png"],
   },
 };
@@ -55,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           staticity={50}
         />
         <Preloader />
+        <FloatingJoinUs />
         {children}
       </body>
     </html>
