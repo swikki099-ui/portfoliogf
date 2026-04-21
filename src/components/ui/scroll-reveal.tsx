@@ -8,60 +8,43 @@ interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right" | "none";
-  duration?: number;
+  type?: "pop" | "slide";
   once?: boolean;
-  distance?: number;
 }
 
 export const ScrollReveal = ({
   children,
   className,
   delay = 0,
-  direction = "up",
-  duration = 0.8,
+  type = "pop",
   once = true,
-  distance = 50,
 }: ScrollRevealProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-10% 0px -10% 0px" });
 
-  const directionOffsets = {
-    up: { y: distance },
-    down: { y: -distance },
-    left: { x: distance },
-    right: { x: -distance },
-    none: {},
+  const variants = {
+    pop: {
+      initial: { opacity: 0, scale: 0.5 },
+      animate: { opacity: 1, scale: 1 },
+    },
+    slide: {
+      initial: { opacity: 0, y: 50 },
+      animate: { opacity: 1, y: 0 },
+    },
   };
 
-  const currentOffset = directionOffsets[direction];
+  const selectedVariant = variants[type];
 
   return (
     <div ref={ref} className={cn("relative", className)}>
       <motion.div
-        initial={{
-          opacity: 0,
-          ...currentOffset,
-          filter: "blur(10px)",
-        }}
-        animate={
-          isInView
-            ? {
-                opacity: 1,
-                x: 0,
-                y: 0,
-                filter: "blur(0px)",
-              }
-            : {
-                opacity: 0,
-                ...currentOffset,
-                filter: "blur(10px)",
-              }
-        }
+        initial={selectedVariant.initial}
+        animate={isInView ? selectedVariant.animate : selectedVariant.initial}
         transition={{
-          duration,
+          duration: 0.5,
           delay,
-          ease: [0.21, 0.47, 0.32, 0.98], // Custom smooth ease
+          type: "spring",
+          bounce: 0.4,
         }}
       >
         {children}

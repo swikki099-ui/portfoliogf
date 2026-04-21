@@ -1,115 +1,55 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Send as Telegram,
-  Code2 as LeetCode,
-  ExternalLink
-} from "lucide-react";
-import AnimatedIcon from "@/components/ui/animated-icon";
+import React from "react";
+import { Github, Twitter, Linkedin, Instagram, MessageCircle } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const socialLinks = [
-  {
-    name: "LinkedIn",
-    icon: Linkedin,
-    href: "https://www.linkedin.com/in/divyanshuchaursia",
-    color: "group-hover:text-blue-600",
-    bg: "group-hover:bg-blue-50",
-    label: "Professional",
-  },
-  {
-    name: "GitHub",
-    icon: Github,
-    href: "https://github.com/chaursia",
-    color: "group-hover:text-slate-900",
-    bg: "group-hover:bg-slate-100",
-    label: "Full Code",
-  },
-  {
-    name: "LeetCode",
-    icon: LeetCode,
-    href: "https://leetcode.com/u/divyanshuchaursia/",
-    color: "group-hover:text-orange-500",
-    bg: "group-hover:bg-orange-50",
-    label: "Algorithm",
-  },
-  {
-    name: "Instagram",
-    icon: Instagram,
-    href: "https://instagram.com/chaursiadivyanshu",
-    color: "group-hover:text-pink-600",
-    bg: "group-hover:bg-pink-50",
-    label: "Life",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    href: "https://twitter.com/",
-    color: "group-hover:text-blue-400",
-    bg: "group-hover:bg-blue-50",
-    label: "X",
-  },
-  {
-    name: "Telegram",
-    icon: Telegram,
-    href: "https://t.me/divyanshuchaursia",
-    color: "group-hover:text-sky-500",
-    bg: "group-hover:bg-sky-50",
-    label: "Chat",
-  },
+  { name: "Github", icon: Github, href: "https://github.com/chaursia", color: "bg-accent" },
+  { name: "Linkedin", icon: Linkedin, href: "https://www.linkedin.com/in/divyanshuchaursia", color: "bg-tertiary" },
+  // Adding placeholders for others or keeping it focused
+  { name: "Twitter", icon: Twitter, href: "#", color: "bg-secondary" },
+  { name: "Instagram", icon: Instagram, href: "#", color: "bg-quaternary" },
 ];
 
 export default function SocialLinks() {
   return (
-    <section id="social" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-black text-slate-900 font-display mb-6 tracking-tight"
-          >
-            Digital <span className="text-indigo-600">Footprint.</span>
-          </motion.h2>
-          <p className="text-slate-500 text-lg max-w-lg mx-auto">
-            Find me where I share code, talk about tech, or document my journey.
-          </p>
-        </div>
+    <section className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-4xl text-center">
+        <ScrollReveal>
+          <div className="inline-flex items-center gap-2 bg-white border-2 border-foreground px-4 py-1 rounded-full hard-shadow-active mb-8">
+            <MessageCircle size={16} />
+            <span className="font-bold text-sm uppercase">Stay Connected</span>
+          </div>
+          <h2 className="font-display font-extrabold text-5xl md:text-7xl mb-12">
+            Find Me <span className="text-accent italic">Online</span>
+          </h2>
+        </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {socialLinks.map((social, i) => (
-            <motion.a
-              key={social.name}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col items-center justify-center text-center transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-100/50 hover:border-indigo-100 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-              <div className={`w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg ${social.bg} ${social.color} mb-6 relative z-10`}>
-                <AnimatedIcon icon={social.icon} size={28} animate="float" />
-              </div>
-
-              <div className="relative z-10">
-                <span className="block text-xs font-bold text-slate-400 tracking-widest uppercase mb-1">{social.label}</span>
-                <span className="block text-lg font-black text-slate-900">{social.name}</span>
-              </div>
-
-              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 transition-transform duration-300">
-                <ExternalLink size={14} className="text-slate-300" />
-              </div>
-            </motion.a>
+        <div className="flex flex-wrap justify-center gap-6">
+          {socialLinks.map((social, index) => (
+            <ScrollReveal key={social.name} delay={index * 0.1}>
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-4"
+              >
+                <div className={`w-24 h-24 ${social.color} border-4 border-foreground rounded-[30px] flex items-center justify-center hard-shadow bounce-transition group-hover:translate-x-[-4px] group-hover:translate-y-[-4px] group-hover:shadow-[12px_12px_0px_0px_#1E293B] group-hover:rotate-6`}>
+                  <social.icon size={40} className="text-white" />
+                </div>
+                <span className="font-display font-black text-xl uppercase tracking-tighter group-hover:text-accent transition-colors">
+                  {social.name}
+                </span>
+              </a>
+            </ScrollReveal>
           ))}
         </div>
       </div>
+      
+      {/* Decorative Dots */}
+      <div className="absolute bottom-0 right-0 w-32 h-32 dot-grid opacity-20 -z-10" />
+      <div className="absolute top-0 left-0 w-32 h-32 dot-grid opacity-20 -z-10" />
     </section>
   );
 }

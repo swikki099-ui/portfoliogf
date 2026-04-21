@@ -2,120 +2,137 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import {
-  Code2,
-  Terminal,
-  Database,
-  GitBranch,
-  Layout,
-  Settings2,
-  Layers,
-  Cpu,
-  Briefcase
+import { 
+  Code2, 
+  Terminal, 
+  Database, 
+  GitBranch, 
+  Layout, 
+  Settings2, 
+  Layers, 
+  Cpu, 
+  Briefcase,
+  Star,
+  Check
 } from "lucide-react";
-import AnimatedIcon from "@/components/ui/animated-icon";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
-const frontendSkills = [
-  { name: "HTML", icon: Layout, color: "text-orange-500", bg: "bg-orange-50" },
-  { name: "CSS", icon: Layers, color: "text-blue-500", bg: "bg-blue-50" },
-  { name: "SASS", icon: Settings2, color: "text-pink-500", bg: "bg-pink-50" },
-  { name: "JavaScript", icon: Code2, color: "text-yellow-500", bg: "bg-yellow-50" },
-  { name: "TypeScript", icon: Terminal, color: "text-blue-600", bg: "bg-blue-50" },
-  { name: "Material UI", icon: Cpu, color: "text-sky-500", bg: "bg-sky-50" },
-];
-
-const backendSkills = [
-  { name: "PostgreSQL", icon: Database, color: "text-indigo-500", bg: "bg-indigo-50" },
-  { name: "Next JS", icon: Settings2, color: "text-green-600", bg: "bg-green-50" },
-  { name: "MongoDB", icon: Database, color: "text-emerald-500", bg: "bg-emerald-50" },
-  { name: "Git", icon: GitBranch, color: "text-orange-600", bg: "bg-orange-50" },
+const skills = [
+  { name: "HTML", icon: Layout, color: "text-orange-500", bg: "bg-orange-50", category: "Core" },
+  { name: "CSS", icon: Layers, color: "text-blue-500", bg: "bg-blue-50", category: "Core" },
+  { name: "JS/TS", icon: Code2, color: "text-yellow-500", bg: "bg-yellow-50", category: "Core" },
+  { name: "Next JS", icon: Settings2, color: "text-green-600", bg: "bg-green-50", category: "Framework" },
+  { name: "React", icon: Cpu, color: "text-sky-500", bg: "bg-sky-50", category: "Framework" },
+  { name: "SQL", icon: Database, color: "text-indigo-500", bg: "bg-indigo-50", category: "Database" },
+  { name: "MongoDB", icon: Database, color: "text-emerald-500", bg: "bg-emerald-50", category: "Database" },
+  { name: "Git", icon: GitBranch, color: "text-orange-600", bg: "bg-orange-50", category: "Tools" },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="text-5xl md:text-6xl font-black text-slate-900 font-display mb-6 tracking-tight"
-          >
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">Arsenal</span>
-          </motion.h2>
-          <p className="text-slate-500 max-w-lg mx-auto text-lg">
-            A comprehensive overview of my tech stack and the tools I use to build scalable products.
-          </p>
-        </div>
+    <section id="experience" className="py-32 relative bg-tertiary/5 overflow-hidden">
+      {/* Background Dot Pattern (Accent color) */}
+      <div className="absolute inset-0 dot-grid opacity-[0.03] -z-10" />
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {/* Main Bento Card - Frontend */}
-          <div className="md:col-span-4 lg:col-span-4 p-8 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col justify-between group hover:bg-slate-100 transition-colors duration-500">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <AnimatedIcon icon={Layout} className="text-indigo-600" size={32} animate="float" />
-                <h3 className="text-2xl font-bold text-slate-900">Frontend Development</h3>
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="grid lg:grid-cols-12 gap-16">
+          
+          {/* Left Side: Skills Arsenal */}
+          <div className="lg:col-span-7">
+            <ScrollReveal>
+              <div className="inline-flex items-center gap-2 bg-accent text-white border-2 border-foreground px-4 py-1 rounded-full hard-shadow-active mb-6">
+                <Briefcase size={16} />
+                <span className="font-display font-black text-xs uppercase tracking-widest">Skill Arsenal</span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {frontendSkills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group/skill"
+              <h2 className="font-display font-extrabold text-5xl md:text-7xl mb-12 tracking-tighter">
+                Tools of <br /> the <span className="text-accent underline decoration-8 decoration-accent/20">Trade</span>.
+              </h2>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              {skills.map((skill, index) => (
+                <ScrollReveal key={skill.name} delay={index * 0.05}>
+                  <motion.div 
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                    className="group bg-white border-2 border-foreground p-6 rounded-3xl hard-shadow-hover bounce-transition relative overflow-hidden h-full"
                   >
-                    <AnimatedIcon icon={skill.icon} className={cn("mb-3", skill.color)} size={24} animate="pulse" />
-                    <span className="text-xs font-bold text-slate-800">{skill.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Secondary Bento Card - Backend */}
-          <div className="md:col-span-2 lg:col-span-2 p-8 rounded-3xl bg-indigo-600 flex flex-col justify-between text-white overflow-hidden relative group">
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-6">Backend & Tools</h3>
-              <div className="flex flex-col gap-4">
-                {backendSkills.map((skill) => (
-                  <div key={skill.name} className="flex items-center gap-4 group/item">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-sm group-hover/item:bg-white/20 transition-colors">
-                      <AnimatedIcon icon={skill.icon} size={18} animate="float" />
+                    {/* Category Label (Glass style) */}
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-muted border border-foreground/10 rounded-full text-[8px] font-black uppercase tracking-widest text-muted-foreground">
+                      {skill.category}
                     </div>
-                    <span className="font-semibold text-white/90">{skill.name}</span>
+
+                    <div className={`w-14 h-14 ${skill.bg} border-2 border-foreground rounded-2xl flex items-center justify-center mb-4 hard-shadow-active group-hover:bg-foreground group-hover:text-white transition-colors`}>
+                      <skill.icon size={28} className={skill.color + " group-hover:text-white"} />
+                    </div>
+                    <span className="font-display font-black text-xl uppercase tracking-tighter">{skill.name}</span>
+                    
+                    {/* Small Checkmark */}
+                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="w-6 h-6 bg-quaternary border-2 border-foreground rounded-full flex items-center justify-center">
+                        <Check size={12} className="text-white" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side: Highlights / Timeline Card */}
+          <div className="lg:col-span-5">
+            <ScrollReveal delay={0.4} type="slide">
+              <div className="relative">
+                {/* Decoration under card */}
+                <div className="absolute inset-0 bg-secondary translate-x-4 translate-y-4 rounded-[50px] -z-10" />
+                
+                <div className="bg-white border-4 border-foreground p-12 rounded-[50px] h-full flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-tertiary border-4 border-foreground rounded-full flex items-center justify-center hard-shadow-active mb-8 animate-bounce">
+                      <Star size={32} fill="white" className="text-white" />
+                    </div>
+                    
+                    <h3 className="font-display font-black text-4xl mb-6 tracking-tighter uppercase italic">
+                      High Impact <br/> Engineering
+                    </h3>
+                    
+                    <p className="font-sans text-lg text-muted-foreground leading-relaxed mb-8">
+                      With <span className="text-foreground font-bold italic">3+ years</span> of professional experience, 
+                      I've built systems that serve thousands of users, focusing on 
+                      accessibility, speed, and interactive delight.
+                    </p>
+
+                    <ul className="space-y-4">
+                      {[
+                        "Modern UI/UX Implementation",
+                        "Frontend Architecture Design",
+                        "Performance Optimization",
+                        "Interactive Animations"
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-center gap-3">
+                          <div className="w-6 h-6 bg-quaternary border-2 border-foreground rounded-full flex items-center justify-center flex-shrink-0">
+                            <Check size={12} className="text-white" />
+                          </div>
+                          <span className="font-display font-bold text-sm uppercase tracking-wide">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                ))}
+
+                  <div className="mt-12 p-6 bg-muted border-2 border-dashed border-foreground rounded-3xl">
+                     <div className="flex items-center gap-4">
+                        <div className="font-display font-black text-4xl text-accent">3+</div>
+                        <div className="font-sans font-bold text-xs uppercase tracking-widest text-muted-foreground leading-tight">
+                           Years of <br/> Crafting Excellence
+                        </div>
+                     </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* Background design element */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700" />
-            <div className="mt-10 relative z-10">
-              <p className="text-sm font-medium text-indigo-100/70">Building solid foundations for modern applications.</p>
-            </div>
+            </ScrollReveal>
           </div>
 
-          {/* Experience Stat Card */}
-          <div className="md:col-span-4 lg:col-span-3 p-8 rounded-3xl border-2 border-slate-50 flex items-center justify-between group hover:border-slate-100 transition-colors">
-            <div className="flex flex-col">
-              <span className="text-6xl font-black text-slate-900 mb-1">3+</span>
-              <span className="text-lg font-bold text-slate-500 uppercase tracking-widest">Years of Experience</span>
-            </div>
-            <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 group-hover:bg-slate-900 group-hover:text-white transition-all duration-500">
-              <AnimatedIcon icon={Briefcase} size={28} animate="float" />
-            </div>
-          </div>
-
-          {/* CTA Card */}
-          <div className="md:col-span-2 lg:col-span-3 p-8 rounded-3xl bg-gradient-to-br from-indigo-500 to-violet-600 flex flex-col justify-center items-center text-center group cursor-pointer" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-            <h4 className="text-2xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">Ready to Build?</h4>
-            <p className="text-indigo-100 text-sm font-medium">Let's turn your ideas into functional products.</p>
-            <div className="mt-6 flex items-center gap-2 px-6 py-3 bg-white rounded-full text-indigo-600 font-bold text-sm">
-              Get in Touch
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 }
-

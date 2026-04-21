@@ -1,136 +1,116 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 20);
-      
-      // Update active link based on scroll position
-      const sections = ["about", "experience", "projects", "contact"];
-      const current = sections.find(section => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActive(`#${current}`);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
-    setMobileOpen(false);
-    setActive(href);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
+    <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-sm border-b border-slate-100 py-2"
-            : "bg-transparent py-4"
-        }`}
+        className={`
+          flex items-center justify-between w-full max-w-5xl px-6 py-3
+          bg-white border-2 border-foreground rounded-full hard-shadow
+          transition-all duration-300
+          ${scrolled ? "py-2 max-w-4xl" : ""}
+        `}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group" onClick={() => scrollTo("#profile")}>
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-sm group-hover:scale-110 transition-transform duration-300">
-               <Image 
-                src="/assets/chaursia-logo.png" 
-                alt="Chaursia logo" 
-                fill
-                className="object-cover"
-              />
-            </div>
-            <span className="font-black text-slate-900 text-lg tracking-tighter hidden sm:block uppercase">Chaursia</span>
-          </Link>
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10 bg-accent rounded-full border-2 border-foreground flex items-center justify-center text-white font-bold text-xl hard-shadow-active">
+            D
+          </div>
+          <span className="font-display font-extrabold text-xl hidden md:block">
+            DIVYANSHU
+          </span>
+        </div>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                className={`relative px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-lg transition-all duration-300 ${
-                  active === link.href
-                    ? "text-indigo-600"
-                    : "text-slate-400 hover:text-slate-900"
-                }`}
-              >
-                {link.label}
-                {active === link.href && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-indigo-500"
-                  />
-                )}
-              </button>
-            ))}
-          </nav>
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="font-sans font-bold hover:text-accent transition-colors relative group"
+            >
+              {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-1 bg-secondary group-hover:w-full transition-all duration-300" />
+            </a>
+          ))}
+        </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-xl text-slate-800 hover:bg-slate-100 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+        {/* CTA Button */}
+        <div className="flex items-center gap-4">
+          <a
+            href="#contact"
+            className="hidden md:flex items-center gap-2 bg-tertiary px-5 py-2 rounded-full border-2 border-foreground font-bold hard-shadow-hover bounce-transition active:translate-x-0.5 active:translate-y-0.5"
           >
-            <motion.div animate={{ rotate: mobileOpen ? 90 : 0 }} transition={{ duration: 0.2 }}>
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </motion.div>
+            Let's Talk
+            <ArrowRight size={18} />
+          </a>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 hover:bg-muted rounded-full transition-colors"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-      </motion.header>
+      </motion.div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {mobileOpen && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-100 shadow-2xl md:hidden py-4"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="absolute top-20 left-4 right-4 bg-white border-2 border-foreground rounded-2xl p-6 hard-shadow md:hidden"
           >
-            <nav className="flex flex-col px-6 gap-2">
+            <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollTo(link.href)}
-                  className="text-left py-4 text-xs font-black uppercase tracking-widest text-slate-600 hover:text-indigo-600 border-b border-slate-50 last:border-0"
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="font-display font-extrabold text-2xl hover:text-accent flex items-center justify-between group"
                 >
-                  {link.label}
-                </button>
+                  {link.name}
+                  <div className="w-8 h-8 bg-quaternary rounded-full border-2 border-foreground flex items-center justify-center group-hover:bg-secondary transition-colors">
+                    <ArrowRight size={16} />
+                  </div>
+                </a>
               ))}
-            </nav>
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="w-full bg-accent text-white py-4 rounded-xl border-2 border-foreground font-bold text-center hard-shadow-hover"
+              >
+                Hire Me
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </nav>
   );
 }
