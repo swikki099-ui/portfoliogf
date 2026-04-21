@@ -14,7 +14,7 @@ export default function Home() {
     '@type': 'Person',
     name: 'Divyanshu Chaursia',
     jobTitle: 'Frontend Architect',
-    url: 'https://divyanshuchaursia.com',
+    url: 'https://chaursia.in',
     sameAs: [
       'https://github.com/chaursia',
       'https://www.linkedin.com/in/divyanshuchaursia'
@@ -34,18 +34,18 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Navbar />
-      
+
       {/* Each component now handles its own internal spacing and reveal logic */}
       <Hero />
-      
+
       <About />
-      
+
       <Experience />
-      
+
       <Projects />
-      
+
       <SocialLinks />
-      
+
       <Contact />
 
       <Footer />

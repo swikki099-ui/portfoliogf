@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://divyanshuchaursia.com';
-  
+  const baseUrl = 'https://chaursia.in';
+
   return [
     {
       url: baseUrl,
