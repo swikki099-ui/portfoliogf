@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/'],
     },
-    sitemap: 'https://divyanshuchaursia.com/sitemap.xml',
+    sitemap: 'https://chaursia.in/sitemap.xml',
   };
 }

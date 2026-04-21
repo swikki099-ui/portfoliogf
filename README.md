@@ -1,23 +1,23 @@
-# 🚀 Modern Portfolio
+# 🚀 Divyanshu Chaursia | Modern Portfolio
 
-A high-performance, visually stunning portfolio built with **Next.js 15**, **React 19**, and **TailwindCSS v4**. Featuring premium animations and 3D interactive elements.
+A high-performance, visually stunning portfolio built with **Next.js 15**, **React 19**, and **TailwindCSS v4**. Featuring a unique playful geometric design, advanced SEO optimization, and premium animations.
 
 ## ✨ Features
 
-- **3D Interaction**: Interactive 3D cards and tilt effects powered by Framer Motion.
-- **Dynamic Backgrounds**: Smooth particle systems and gradient spotlights.
-- **Bento Grid Layout**: Clean, organized technical arsenal and skills display.
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
-- **Smooth Navigation**: Scroll-spy navbar with seamless section transitions.
+- **Playful Geometric Design**: Bold colors, hard shadows, and custom geometric shapes.
+- **Advanced SEO**: Full OpenGraph tags, JSON-LD structured data, programmatic sitemaps, and robots configuration.
+- **Mobile First Responsiveness**: Fully optimized and responsive layouts for mobile, tablet, and desktop devices.
+- **Fluid Animations**: Scroll reveal, parallax effects, and micro-interactions powered by Framer Motion.
+- **Functional Contact Form**: Integrated with Nodemailer for direct communication.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
 - **Library**: React 19
-- **Styling**: TailwindCSS v4
+- **Styling**: TailwindCSS v4 (Custom Playful Design System)
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **UI Components**: Aceternity UI (Customized)
+- **Email Handling**: Nodemailer
 
 ## 🚀 Getting Started
 

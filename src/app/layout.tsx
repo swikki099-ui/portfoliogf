@@ -16,14 +16,14 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://divyanshuchaursia.com'),
+  metadataBase: new URL('https://chaursia.in'),
   title: {
     default: "Divyanshu Chaursia | Frontend Architect & AI Explorer",
     template: "%s | Divyanshu Chaursia"
   },
   description: "Divyanshu Chaursia is a Frontend Developer specializing in React, Next.js, and modern web architectures. Building intelligent, responsive, and high-performance digital experiences.",
   keywords: ["Frontend Developer", "React Developer", "Next.js", "Web Developer", "UI/UX", "Portfolio", "Divyanshu Chaursia", "AI Enthusiast", "JavaScript", "TypeScript"],
-  authors: [{ name: "Divyanshu Chaursia", url: "https://divyanshuchaursia.com" }],
+  authors: [{ name: "Divyanshu Chaursia", url: "https://d" }],
   creator: "Divyanshu Chaursia",
   publisher: "Divyanshu Chaursia",
   formatDetection: {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Divyanshu Chaursia | Frontend Architect",
     description: "Frontend Developer specializing in React, Next.js, and modern web architectures.",
-    url: 'https://divyanshuchaursia.com',
+    url: 'https://chaursia.in',
     siteName: 'Divyanshu Chaursia Portfolio',
     images: [
       {
